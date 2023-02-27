@@ -72,6 +72,12 @@ const timeOfDaysEqual = (
   day1.seconds === day2.seconds &&
   day1.nanos === day2.nanos;
 
+/**
+ * Maps opening hours with resource state considered as "open" to Google hours.
+ * This might not be a viable solution since looks like we cannot
+ * get the states visible to Google thus it does not tell the whole
+ * truth when a citizen can actually enter the location.
+ */
 export const toGoogleRegularOpeningHours = (
   openingHours: HaukiOpeningHours[]
 ): mybusinessbusinessinformation_v1.Schema$TimePeriod[] =>
