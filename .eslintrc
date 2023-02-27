@@ -1,0 +1,9 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["prettier"],
+  "extends": ["airbnb-base", "airbnb-typescript/base", "prettier"],
+  "rules": {
+    "prettier/prettier": 2
+  }
+}
