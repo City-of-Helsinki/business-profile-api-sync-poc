@@ -16,6 +16,16 @@ const mybusinessbusinessinformation = google.mybusinessbusinessinformation({
   version: 'v1'
 });
 
+const mybusinessverifications = google.mybusinessverifications({
+  auth,
+  version: 'v1'
+});
+
+const mybusinessaccountmanagement = google.mybusinessaccountmanagement({
+  auth,
+  version: 'v1'
+});
+
 export const findByLocationTitleAndAddress = (
   location: mybusinessbusinessinformation_v1.Schema$Location
 ) => {
@@ -39,21 +49,19 @@ export const findByLocationTitleAndAddress = (
 
 export const createLocation = (
   location: mybusinessbusinessinformation_v1.Schema$Location
-) => {
-  return mybusinessbusinessinformation.accounts.locations
+) =>
+  mybusinessbusinessinformation.accounts.locations
     .create({
-      parent: LOCATION_GROUP_ID, // Location group
+      parent: LOCATION_GROUP_ID,
       requestBody: location,
       requestId: `${new Date().getTime()}`,
       validateOnly
     })
     .then((result) => result.data);
-};
 
 export const fetchVerificationOptions = (location: string) =>
-  google
-    .mybusinessverifications({ auth, version: 'v1' })
-    .locations.fetchVerificationOptions({
+  mybusinessverifications.locations
+    .fetchVerificationOptions({
       location,
       requestBody: { languageCode: 'FI' }
     })
@@ -64,9 +72,8 @@ export const fetchVerificationOptions = (location: string) =>
     });
 
 export const verifyLocation = (location: string) =>
-  google
-    .mybusinessverifications({ auth, version: 'v1' })
-    .locations.verify({ name: location, requestBody: { method: 'AUTO' } })
+  mybusinessverifications.locations
+    .verify({ name: location, requestBody: { method: 'AUTO' } })
     .then((result) => result.data.verification);
 
 export const findLocationByStoreCode = (storeCode: string) =>
@@ -89,3 +96,8 @@ export const updateLocation = (
       updateMask
     })
     .then((result) => result.data);
+
+export const listAccounts = () =>
+  mybusinessaccountmanagement.accounts
+    .list()
+    .then((response) => response.data.accounts);

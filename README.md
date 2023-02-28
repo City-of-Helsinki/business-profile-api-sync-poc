@@ -16,8 +16,20 @@ npm install
 npm run build
 ```
 
-### Run syncronization
+### Copy .env
 
 ```shell
-npm run start -- <TPR_UNIT_ID>
+cp .env.example .env
+```
+
+### Get accounts and copy the appropriate location group id to .env file
+
+```shell
+npm run start -- accounts
+```
+
+### Run synchronization
+
+```shell
+npm run start -- location <TPR_UNIT_ID>
 ```
