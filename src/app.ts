@@ -166,3 +166,5 @@ export const handleLocation = async (id: number) => {
     return newGoogleLocation;
   }
 };
+
+export const listAccounts = () => businessProfile.listAccounts();
