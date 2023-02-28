@@ -167,4 +167,8 @@ export const handleLocation = async (id: number) => {
   }
 };
 
-export const listAccounts = () => businessProfile.listAccounts();
+export const listAccounts = businessProfile.listAccounts;
+
+export const listInvitations = businessProfile.listInvitations;
+
+export const acceptInvitation = businessProfile.acceptInvitation;
