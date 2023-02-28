@@ -101,3 +101,11 @@ export const listAccounts = () =>
   mybusinessaccountmanagement.accounts
     .list()
     .then((response) => response.data.accounts);
+
+export const listInvitations = (parent: string) =>
+  mybusinessaccountmanagement.accounts.invitations
+    .list({ parent })
+    .then((response) => response.data.invitations);
+
+export const acceptInvitation = (name: string) =>
+  mybusinessaccountmanagement.accounts.invitations.accept({ name });
