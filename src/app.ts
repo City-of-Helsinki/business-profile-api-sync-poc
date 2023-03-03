@@ -172,3 +172,5 @@ export const listAccounts = businessProfile.listAccounts;
 export const listInvitations = businessProfile.listInvitations;
 
 export const acceptInvitation = businessProfile.acceptInvitation;
+
+export const listCategories = businessProfile.listCategories;
