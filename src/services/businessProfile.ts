@@ -109,3 +109,8 @@ export const listInvitations = (parent: string) =>
 
 export const acceptInvitation = (name: string) =>
   mybusinessaccountmanagement.accounts.invitations.accept({ name });
+
+export const listCategories = () =>
+  mybusinessbusinessinformation.categories
+    .list({ regionCode: 'FI', languageCode: 'FI', view: 'BASIC' })
+    .then((response) => response.data.categories);

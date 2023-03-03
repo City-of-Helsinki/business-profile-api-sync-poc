@@ -8,6 +8,7 @@ import {
   acceptInvitation,
   handleLocation,
   listAccounts,
+  listCategories,
   listInvitations
 } from './app';
 import logger from './logger';
@@ -64,6 +65,12 @@ switch (action) {
       console.log(JSON.stringify(invitations, null, 2))
     );
 
+    break;
+
+  case 'categories':
+    listCategories().then((categories) =>
+      console.log(JSON.stringify(categories, null, 2))
+    );
     break;
 
   default:
