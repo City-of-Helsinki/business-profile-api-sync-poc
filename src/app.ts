@@ -28,9 +28,9 @@ const findByLocationTitleAndAddress = async (location: TPRLocation) => {
     const existingLocation = existingLocations[0];
 
     if (
-      existingLocation.name
+      existingLocation.location?.title
         ?.toLowerCase()
-        .includes(location.name_fi.toLocaleLowerCase())
+        .includes(location.name_fi.toLowerCase())
     ) {
       logger.info('Location found.');
       return existingLocation;
