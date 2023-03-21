@@ -93,7 +93,8 @@ export const updateLocation = (
     .patch({
       name: location.name,
       requestBody: location,
-      updateMask
+      updateMask,
+      validateOnly
     })
     .then((result) => result.data);
 
