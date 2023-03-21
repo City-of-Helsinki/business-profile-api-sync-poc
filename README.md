@@ -66,3 +66,29 @@ npm run start -- accounts
 ```shell
 npm run start -- location <TPR_UNIT_ID>
 ```
+
+## Event driven architecture POC
+
+Run Kafka server
+
+```shell
+docker-compose up
+```
+
+Build application
+
+```shell
+npm run build
+```
+
+Run resource updates event listener
+
+```shell
+npm run start-resource-updates-listener
+```
+
+Fire test resource update event
+
+```shell
+npm run test-resource-update
+```

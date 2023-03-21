@@ -119,10 +119,13 @@ const updateLocation = (
   existingLocation: ExistingLocation
 ): any => {
   logger.info('Updating opening hours');
-  return businessProfile.updateLocation(
+  const result = businessProfile.updateLocation(
     updateOpeningHours(openingHours, existingLocation),
     'regularHours'
   );
+  logger.info('Updating opening hours successful');
+
+  return result;
 };
 
 export const handleLocation = async (id: number) => {
