@@ -10,16 +10,16 @@ This is a proof of concept for syncronizing opening hours from Hauki API to Goog
 npm install
 ```
 
-### Build
-
-```shell
-npm run build
-```
-
 ### Copy .env
 
 ```shell
 cp .env.example .env
+```
+
+### Build
+
+```shell
+npm run build
 ```
 
 ### Service account preparation
@@ -34,19 +34,19 @@ cp .env.example .env
 #### List accounts to get the service account id
 
 ```shell
-npm run start -- accounts
+npm run cmd -- accounts
 ```
 
 #### Use service account id to get invitations
 
 ```shell
-npm run start -- invites <SERVICE_ACCOUNT_ID>
+npm run cmd -- invites <SERVICE_ACCOUNT_ID>
 ```
 
 #### Accept the invite
 
 ```shell
-npm run start -- accept <INVITE_ID>
+npm run cmd -- accept <INVITE_ID>
 ```
 
 ### Finalize service account setup
@@ -58,13 +58,13 @@ npm run start -- accept <INVITE_ID>
 #### Get accounts and copy the appropriate location group id to .env file
 
 ```shell
-npm run start -- accounts
+npm run cmd -- accounts
 ```
 
 ### Run synchronization
 
 ```shell
-npm run start -- location <TPR_UNIT_ID>
+npm run cmd -- location <TPR_UNIT_ID>
 ```
 
 ## Event driven architecture POC

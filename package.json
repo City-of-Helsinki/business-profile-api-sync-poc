@@ -29,7 +29,7 @@
     "build": "rimraf ./build && tsc && cp .env ./build/.env",
     "lint": "eslint . --ext .ts",
     "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
-    "start": "node build/index.js",
+    "cmd": "node build/cmd.js",
     "start-resource-updates-listener": "node build/resourceUpdatesEventListener.js",
     "test-resource-update": "node build/testResourceUpdate.js"
   }
