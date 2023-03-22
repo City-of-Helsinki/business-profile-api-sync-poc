@@ -1,15 +1,15 @@
-import * as tpr from './services/tpr';
-import * as hauki from './services/hauki';
-import * as businessProfile from './services/businessProfile';
+import * as tpr from '../services/tpr';
+import * as hauki from '../services/hauki';
+import * as businessProfile from '../services/businessProfile';
 import {
   DuplicateLocationsFoundError,
   ExistingLocation,
   LocationClaimedError,
   TPRLocation,
   VerificationFailedError
-} from './types';
-import { toGoogleLocation, toGoogleRegularOpeningHours } from './helpers';
-import logger from './logger';
+} from '../types';
+import { toGoogleLocation, toGoogleRegularOpeningHours } from '../helpers';
+import logger from '../logger';
 import { mybusinessbusinessinformation_v1 } from 'googleapis';
 
 const findByLocationTitleAndAddress = async (location: TPRLocation) => {
@@ -128,7 +128,7 @@ const updateLocation = (
   return result;
 };
 
-export const handleLocation = async (haukiId: number) => {
+const handleLocation = async (haukiId: number) => {
   logger.info(`Fetching location from Hauki with id "${haukiId}"`);
   const resource = await hauki.getResource(haukiId);
   const tprId = resource.origins.find(
@@ -180,10 +180,4 @@ export const handleLocation = async (haukiId: number) => {
   }
 };
 
-export const listAccounts = businessProfile.listAccounts;
-
-export const listInvitations = businessProfile.listInvitations;
-
-export const acceptInvitation = businessProfile.acceptInvitation;
-
-export const listCategories = businessProfile.listCategories;
+export default handleLocation;

@@ -4,15 +4,15 @@ dotenv.config();
 
 import parseArgs from 'minimist';
 
+import logger from './logger';
+import { exit } from 'process';
+import handleLocation from './app/handleLocation';
 import {
   acceptInvitation,
-  handleLocation,
   listAccounts,
   listCategories,
   listInvitations
-} from './app';
-import logger from './logger';
-import { exit } from 'process';
+} from './services/businessProfile';
 
 const args = parseArgs(process.argv.slice(2));
 const action = args._[0];

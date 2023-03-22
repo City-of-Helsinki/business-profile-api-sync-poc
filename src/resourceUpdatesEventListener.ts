@@ -2,7 +2,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 import { Kafka } from 'kafkajs';
-import { handleLocation } from './app';
+import handleLocation from './app/handleLocation';
 import logger from './logger';
 
 const topic = 'resource-updates';
