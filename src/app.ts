@@ -128,9 +128,19 @@ const updateLocation = (
   return result;
 };
 
-export const handleLocation = async (id: number) => {
-  logger.info(`Fetching location from TPR with id "${id}"`);
-  const location = await tpr.findLocation(id);
+export const handleLocation = async (haukiId: number) => {
+  logger.info(`Fetching location from Hauki with id "${haukiId}"`);
+  const resource = await hauki.getResource(haukiId);
+  const tprId = resource.origins.find(
+    (origin) => origin.data_source.id === 'tprek'
+  )?.origin_id;
+
+  if (!tprId) {
+    throw new Error('Not TPR originated resource');
+  }
+
+  logger.info(`Fetching location from TPR with id "${tprId}"`);
+  const location = await tpr.findLocation(tprId);
   logger.info(`Fetching opening hours from Hauki API with id "${location.id}"`);
   const openingHours = await hauki
     .getOpeningHours(location.id)
@@ -142,7 +152,7 @@ export const handleLocation = async (id: number) => {
   );
 
   if (existingLocations) {
-    logger.info('Location found by store code "%s"', id);
+    logger.info('Location found by store code "%s"', tprId);
     return updateLocation(
       openingHours,
       existingLocations[0] as ExistingLocation

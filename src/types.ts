@@ -35,6 +35,11 @@ export type TimeElement = {
   resource_state: ResourceState;
 };
 
+export type HaukiResource = {
+  id: number;
+  origins: [{ data_source: { id: string }; origin_id: number }];
+};
+
 export type HaukiOpeningHours = {
   date: string;
   times: TimeElement[];

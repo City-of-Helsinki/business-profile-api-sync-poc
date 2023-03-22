@@ -11,7 +11,7 @@ const run = async () => {
   await producer.connect();
   await producer.send({
     topic: 'resource-updates',
-    messages: [{ value: '57184' }]
+    messages: [{ value: '13066' }]
   });
 
   await producer.disconnect();

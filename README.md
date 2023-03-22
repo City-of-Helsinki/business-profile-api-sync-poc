@@ -64,7 +64,7 @@ npm run cmd -- accounts
 ### Run synchronization
 
 ```shell
-npm run cmd -- location <TPR_UNIT_ID>
+npm run cmd -- location <HAUKI_ID>
 ```
 
 ## Event driven architecture POC

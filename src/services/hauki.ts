@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { HaukiOpeningHours } from '../types';
+import { HaukiResource, HaukiOpeningHours } from '../types';
+
+export const getResource = (id: number): Promise<HaukiResource> =>
+  axios
+    .get<HaukiResource>(`https://hauki.api.hel.fi/v1/resource/${id}/`)
+    .then((result) => result.data);
 
 export const getOpeningHours = (id: string): Promise<HaukiOpeningHours[]> =>
   axios
