@@ -21,3 +21,19 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+
+  postgres:
+      image: "postgres:12-alpine"
+      environment:
+          POSTGRES_USER: business-profile-api-poc
+          POSTGRES_PASSWORD: business-profile-api-poc
+          POSTGRES_DB: business-profile-api-poc
+      ports:
+          - "127.0.0.1:5555:5432"
+      volumes:
+          - postgres-data-volume:/var/lib/postgresql/data
+
+volumes:
+        postgres-data-volume:
+
