@@ -1,4 +1,4 @@
-# Business Profile API sync poc - API
+# Business Profile API sync POC - API
 
 ## How to run
 
