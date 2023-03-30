@@ -1,5 +1,17 @@
 # Business Profile API sync POC - UI
 
+Apparently it seems that it's not possible to fully automate the process of claiming, creating and verifying locations so it needs some manual interaction from the business owners. The monitoring UI's intent is to make these cases visible and support the user to take further actions.
+
+(Possible) Capabilities
+
+- In case of location being already claimed by someone, support for starting the location ownership exchange process.
+
+- In case of multiple locations found for the given name and address, support for selecting the desired location or allow to create new one.
+
+- In case of AUTO verification failed, support for starting the verification process manually
+
+<hr />
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
