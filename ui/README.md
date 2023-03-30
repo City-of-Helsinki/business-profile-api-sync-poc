@@ -5,9 +5,7 @@ Apparently it seems that it's not possible to fully automate the process of clai
 (Possible) Capabilities
 
 - In case of location being already claimed by someone, support for starting the location ownership exchange process.
-
 - In case of multiple locations found for the given name and address, support for selecting the desired location or allow to create new one.
-
 - In case of AUTO verification failed, support for starting the verification process manually
 
 <hr />
