@@ -77,7 +77,7 @@ export const verifyLocation = (location: string) =>
     .verify({ name: location, requestBody: { method: 'AUTO' } })
     .then((result) => result.data.verification);
 
-export const findLocationIdByStoreCode = (storeCode: string) =>
+export const findExistingLocationIdByStoreCode = (storeCode: string) =>
   mybusinessbusinessinformation.accounts.locations
     .list({
       filter: `storeCode="${storeCode}"`,
@@ -93,6 +93,38 @@ export const findLocationIdByStoreCode = (storeCode: string) =>
 
       return locations[0]?.name ?? undefined;
     });
+
+export const findExistingLocationIdByTitleAndPostalInfo = (
+  title: string,
+  zipCode: string,
+  postOffice: string
+) => {
+  const search = {
+    title: title,
+    'storefront_address.postal_code': zipCode,
+    'storefront_address.locality': postOffice
+  };
+
+  return mybusinessbusinessinformation.accounts.locations
+    .list({
+      filter: Object.entries(search)
+        .map((value) => `${value[0]}="${value[1]}"`)
+        .join(' AND '),
+      parent: LOCATION_GROUP_ID,
+      readMask: 'name'
+    })
+    .then((result) => {
+      const locations = result.data.locations ?? [];
+
+      if (locations.length > 1) {
+        throw new Error(
+          `Multiple locations found for title ${title}, postal code ${zipCode} and locality ${postOffice}`
+        );
+      }
+
+      return locations[0]?.name ?? undefined;
+    });
+};
 
 export const updateOpeningHours = (
   name: string,

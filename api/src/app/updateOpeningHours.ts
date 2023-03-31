@@ -154,12 +154,28 @@ const handleOpeningHoursUpdated = async (
   }
 
   logger.info('Fetch Google location by store code "%s"', location.id);
-  const googleLocationId = await businessProfile.findLocationIdByStoreCode(
-    location.id
-  );
+  let googleLocationId =
+    await businessProfile.findExistingLocationIdByStoreCode(location.id);
+
+  if (!googleLocationId) {
+    logger.info('Location not found by store code "%s"', location.id);
+    logger.info(
+      'Fetch Google location by title "%s", postal code "%s" and locality "%s"',
+      tprLocation.name_fi,
+      tprLocation.address_zip,
+      tprLocation.address_city_fi
+    );
+
+    googleLocationId =
+      await businessProfile.findExistingLocationIdByTitleAndPostalInfo(
+        tprLocation.name_fi,
+        tprLocation.address_zip,
+        tprLocation.address_city_fi
+      );
+  }
 
   if (googleLocationId) {
-    logger.info('Location found by store code "%s"', location.id);
+    logger.info('Google location found');
     logger.info('Update opening hours');
 
     const regularOpeningHours = toRegularOpeningHours(opening_hours);
@@ -177,9 +193,7 @@ const handleOpeningHoursUpdated = async (
     logger.info('Updating opening hours successful');
   } else {
     try {
-      logger.info(
-        'Google location not found with the store code. Creating location to Google'
-      );
+      logger.info('Google location not found. Creating location to Google');
 
       const googleLocation = await createLocation(opening_hours, tprLocation);
 
