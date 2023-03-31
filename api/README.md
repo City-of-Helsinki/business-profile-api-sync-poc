@@ -1,5 +1,7 @@
 # Business Profile API sync POC - API
 
+This i a proof of concept of a service that synchronizes opening hours from Aukiolosovellus to Google Business Profile. The idea is that when opening hours change in Aukiolosovellus the service gets a notification about it and then pushes new opening hours to Google. The idea is to use event driven architecture for this.
+
 ## How to run
 
 ### Service account preparation
