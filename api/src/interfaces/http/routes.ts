@@ -9,7 +9,7 @@ const routes = (db: Knex) => {
     res.send('Hello');
   });
 
-  router.get('/event', async (req, res) => {
+  router.get('/events', async (req, res) => {
     res.json(await getEvents(db));
   });
 

@@ -39,7 +39,7 @@ const Events = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch("/api/event");
+      const response = await fetch("/api/events");
       const result = await response.json();
       setEvents(result);
     };
